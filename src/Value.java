@@ -35,7 +35,7 @@ public class Value implements CustomObject{
         }
         return false;
     }
-    public boolean canAddition(CustomObject c){
+    public boolean canAdditionOrSub(CustomObject c){
         if(c instanceof Value){
             ((Value) c).sortVar();
             this.sortVar();
@@ -56,8 +56,15 @@ public class Value implements CustomObject{
         }
     }
     public Value addition(CustomObject c){
-        if(canAddition(c)){
+        if(canAdditionOrSub(c)){
             return new Value(this.getValue()+((Value) c).getValue(),getVar());
+        }else{
+            return this;
+        }
+    }
+    public Value substraction(CustomObject c){
+        if(canAdditionOrSub(c)){
+            return new Value(this.getValue()-((Value) c).getValue(),getVar());
         }else{
             return this;
         }

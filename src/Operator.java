@@ -1,7 +1,8 @@
 public enum Operator implements CustomObject{
     Multiply('*'),
     Divide('/'),
-    Addition('+');
+    Addition('+'),
+    Substraction('-');
 
     protected char symbol;
     Operator(char symbol){

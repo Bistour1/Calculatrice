@@ -123,7 +123,18 @@ public class Fenetre extends JFrame {
     }
     class SustractListener implements ActionListener{
         public void  actionPerformed(ActionEvent e){
-
+            if(ecran.getText().charAt(ecran.getText().length()-1) =='-'||
+            ecran.getText().charAt(ecran.getText().length()-1) == '*'||
+                    ecran.getText().charAt(ecran.getText().length()-1) == '+'||
+                    ecran.getText().charAt(ecran.getText().length()-1) == '/') return;
+            if(ecran.getText() == "0"){
+                currentNumber = "-0";
+                ecran.setText("-");
+            }else {
+                ecran.setText(ecran.getText() + "-");
+                currentNumber = "";
+            }
+            ecranFinal.repaint();
         }
     }class MultiplyListener implements ActionListener{
         public void  actionPerformed(ActionEvent e){
@@ -156,10 +167,14 @@ public class Fenetre extends JFrame {
                 if(currentNumber == ""){
                     currentNumber = "0.";
                     ecran.setText(ecran.getText()+"0.");
+                }else if(currentNumber =="-0") {
+                    currentNumber = "-"+chiffre;
+                    ecran.setText(ecran.getText()+chiffre);
                 }else{
                     currentNumber += ".";
                     ecran.setText(ecran.getText()+".");
                 }
+                ecranFinal.repaint();
             }else {
                 ecran.setText(ecran.getText() + chiffre);
                 currentNumber += chiffre;

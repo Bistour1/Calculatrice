@@ -10,7 +10,7 @@ import java.util.List;
 public class EcranFinal extends JPanel {
 
     Font police = new Font("Arial", Font.BOLD, 80);
-    List<Character> numbers = Arrays.asList('1', '2', '3', '4', '5','6', '7', '8', '9', '0', '.');
+    List<Character> numbers = Arrays.asList('-','1', '2', '3', '4', '5','6', '7', '8', '9', '0', '.');
     @Override
     public void paintComponent(Graphics g) {
         g.setColor(Color.WHITE);
@@ -47,6 +47,18 @@ public class EcranFinal extends JPanel {
                     values.add(calcul(i - 1, stop));
                     values.simplify();
                     return values;
+                }else{
+                    return calcul(i - 1, stop);
+                }
+            }else if(Fenetre.getEcranValue().charAt(i) == '-'){
+                if(start != i) {
+                    if(stop != i){
+                        values.add(calcul(start, i + 1));
+                        values.add(Operator.Substraction);
+                        values.add(calcul(i - 1, stop));
+                        values.simplify();
+                        return values;
+                    }
                 }else{
                     return calcul(i - 1, stop);
                 }
@@ -89,6 +101,7 @@ public class EcranFinal extends JPanel {
         if(var != ""){
             coef = 1;
         }
+        System.out.println("number :"+number);
         if(number != "") {
             coef = Double.valueOf(number);
         }

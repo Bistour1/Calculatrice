@@ -69,7 +69,7 @@ public class CustomValue implements CustomObject{
                     case Addition:
                         if(i != list.size() && i!= 0){
                             if(list.get(i+1) instanceof Value) {
-                                if(((Value) list.get(i+1)).canAddition(list.get(i-1))) {
+                                if(((Value) list.get(i+1)).canAdditionOrSub(list.get(i-1))) {
                                     Value result = ((Value) list.get(i+1)).addition(list.get(i-1));
                                     list.remove(list.get(i+1));
                                     list.remove(list.get(i));
@@ -80,6 +80,19 @@ public class CustomValue implements CustomObject{
                             }
                         }
                         break;
+                    case Substraction:
+                        if(i != list.size() && i!= 0){
+                            if(list.get(i+1) instanceof Value) {
+                                if(((Value) list.get(i+1)).canAdditionOrSub(list.get(i-1))) {
+                                    Value result = ((Value) list.get(i+1)).substraction(list.get(i-1));
+                                    list.remove(list.get(i+1));
+                                    list.remove(list.get(i));
+                                    list.set(i-1,result);
+                                    simplify();
+                                    return;
+                                }
+                            }
+                        }
                 }
             }
         }
