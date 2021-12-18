@@ -17,6 +17,7 @@ public class Fraction implements CustomObject{
                         String numVar = ((Value) this.numerator).getVar();
                         numVar.replaceFirst(ch+"","");
                         ((Value) this.numerator).setVar(numVar);
+
                         ((Value) this.denominator).setVar(((Value) denominator).getVar().replaceFirst(ch+"",""));
                     }
                 }

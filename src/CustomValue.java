@@ -21,6 +21,7 @@ public class CustomValue implements CustomObject{
                 if(((CustomValue) list.get(i)).getList().size() == 1){
                     if(((CustomValue) list.get(i)).getList().get(0) instanceof Value){
                         list.set(i,((CustomValue) list.get(i)).getList().get(0));
+                        System.out.println("wshwsh");
                         simplify();
                         return;
                     }
@@ -48,7 +49,8 @@ public class CustomValue implements CustomObject{
                                 Fraction fraction = new Fraction(list.get(i-1),list.get(i+1));
                                 list.remove(list.get(i+1));
                                 list.remove(list.get(i));
-                                if(fraction.getDenominator() instanceof Value && ((Value) fraction.getDenominator()).getValue() == 0&& ((Value) fraction.getDenominator()).getVar() == ""){
+                                System.out.println("denominator:"+fraction.getDenominator().toString());
+                                if(fraction.getDenominator() instanceof Value && ((Value) fraction.getDenominator()).getValue() == 1&& ((Value) fraction.getDenominator()).getVar() == ""){
                                     list.set(i-1,fraction.getNumerator());
                                 }else {
                                     list.set(i - 1, fraction);

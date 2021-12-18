@@ -117,6 +117,7 @@ public class Fenetre extends JFrame {
                     ecran.getText().charAt(ecran.getText().length()-1) == '+'||
                     ecran.getText().charAt(ecran.getText().length()-1) == '/') return;
                 ecran.setText(ecran.getText() + "+");
+                currentNumber = "";
             ecranFinal.repaint();
         }
     }
@@ -155,6 +156,9 @@ public class Fenetre extends JFrame {
                 if(currentNumber == ""){
                     currentNumber = "0.";
                     ecran.setText(ecran.getText()+"0.");
+                }else{
+                    currentNumber += ".";
+                    ecran.setText(ecran.getText()+".");
                 }
             }else {
                 ecran.setText(ecran.getText() + chiffre);

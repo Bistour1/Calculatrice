@@ -23,6 +23,7 @@ public class EcranFinal extends JPanel {
             int multiplier = 1;
             CustomValue result = calcul(Fenetre.getEcranValue().length()-1,0);
             result.simplify();
+            System.out.println(result.toString());
             int l = result.getLength();
             if(l >18){
                 while (l>18){
@@ -67,6 +68,7 @@ public class EcranFinal extends JPanel {
                     values.add(calcul(i-1,stop));
                     values.add(Operator.Divide);
                     values.add(calcul(start, i + 1));
+                    values.simplify();
                     return values;
                 }else{
                     return calcul(i - 1, stop);
